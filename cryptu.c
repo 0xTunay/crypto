@@ -26,6 +26,24 @@ char* encode(const char* text, const char* key) {
 
 int main() {
     initializeNumAlph();
+    
+        char text[100];  // Assuming a maximum length for the input
+    printf("Enter the text: ");
+    scanf("%s", text);
 
+    char key[100];   // Assuming a maximum length for the key
+    printf("Enter the key: ");
+    scanf("%s", key);
+
+
+
+
+    char* result = encode(text, key);
+
+    printf("Encoded text: %s\n", result);
+
+    free(result);
+
+    return 0;
 
 }

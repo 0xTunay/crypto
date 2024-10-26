@@ -1,11 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+
+typedef struct {
 
 char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 char numAlph[256];  // ASCII characters
-
-
-
+} Sex;
+// КОГДА НИБУДЬ ДОДЕЛАТЬ ЭТО 
 void initializeNumAlph() {
     for (int i = 0; i < strlen(alphabet); i++) {
         numAlph[alphabet[i]] = i;
@@ -22,27 +24,24 @@ char* encode(const char* text, const char* key) {
 
     code[textLength] = '\0';
     return code;
+    free(code);
 }
 
-int main() {
+int main(void) {
     initializeNumAlph();
     
-        char text[100];  // Assuming a maximum length for the input
-    printf("Enter the text: ");
-    scanf("%s", text);
+    char text[100],key[100];  // Assuming a maximum length for the input
+    puts("Enter the text: ");
+    fgets(text,sizeof(text),stdin);
 
-    char key[100];   // Assuming a maximum length for the key
-    printf("Enter the key: ");
-    scanf("%s", key);
-
-
-
+    puts("Enter the key: ");
+    fgets(key,sizeof(key),stdin);
 
     char* result = encode(text, key);
 
-    printf("Encoded text: %s\n", result);
+    printf("Encoded text: %s\n", encode(text, key));
 
-    free(result);
+    result = NULL;
 
     return 0;
 
